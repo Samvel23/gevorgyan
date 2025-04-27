@@ -1,0 +1,233 @@
+.hero {
+  background-color: #1a2b49; /* Navy Blue */
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px; /* Adjust for fixed navbar */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0.3;
+}
+
+.logo {
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.heroTitle {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  z-index: 1;
+  animation: fadeIn 1s ease-in;
+}
+
+.heroSubtitle {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  z-index: 1;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.callButton {
+  background-color: #cba64b; /* Gold */
+  border: none;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.callButton:hover {
+  background-color: #b5923f;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.callButton:active {
+  transform: scale(0.95);
+}
+
+.contactSection {
+  background-color: #cba64b; /* Gold */
+  color: #1a2b49; /* Navy Blue for text */
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  animation: slideUp 0.8s ease-out;
+}
+
+.contactInfo {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+}
+
+.contactLink {
+  color: #1a2b49;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contactLink:hover {
+  color: #0f1b33;
+  text-decoration: underline;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.socialLink {
+  color: #1a2b49;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #0f1b33;
+  transform: scale(1.2);
+}
+
+.servicesSection {
+  background-color: #f8f1e9; /* Ivory */
+  color: #1a2b49;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.servicesContent {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.servicesContent ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.servicesContent li {
+  font-size: 1.2rem;
+  margin: 0.75rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.servicesContent li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #cba64b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .callButton {
+    padding: 0.6rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .contactInfo {
+    font-size: 1.1rem;
+  }
+
+  .socialIcons {
+    gap: 1rem;
+  }
+
+  .socialLink svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 1.5rem;
+    padding-top: 70px; /* Adjust for navbar */
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .servicesContent {
+    font-size: 1rem;
+  }
+
+  .servicesContent li {
+    font-size: 1rem;
+  }
+}

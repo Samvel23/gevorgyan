@@ -1,0 +1,222 @@
+.navbar {
+  background-color: #1a2b49; /* Navy Blue */
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .navbarLogo {
+    display: none;
+  }
+}
+
+.navbarLogo:hover {
+  transform: scale(1.1);
+}
+
+.navbarTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #cba64b; /* Gold */
+}
+
+.navLink.active {
+  color: #cba64b;
+  font-weight: 600;
+}
+
+.navLink.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #cba64b;
+  animation: slideIn 0.3s ease;
+}
+
+.languageToggle {
+  position: relative;
+}
+
+.langDisplay {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.langItem {
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.langItem:hover {
+  color: #cba64b;
+}
+
+.langItem.langActive {
+  color: #cba64b;
+  font-weight: 600;
+}
+
+.langItem:hover .langPopup {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.langPopup {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 5px);
+  background-color: #1a2b49;
+  border: 1px solid #cba64b;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbarContainer {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .navbarTitle {
+    display: none; /* Hide GEVORGYAN on mobile */
+  }
+
+  .navbarLogo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navContent {
+    gap: 1rem;
+  }
+
+  .navLinks {
+    gap: 0.8rem;
+  }
+
+  .navLink {
+    font-size: 0.95rem;
+  }
+
+  .navLink.active::after {
+    bottom: -2px;
+    height: 1.5px;
+  }
+
+  .langDisplay {
+    font-size: 0.8rem;
+  }
+
+  .langPopup {
+    transform: translate(-50%, 3px);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbarContainer {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbarLogo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navLinks {
+    gap: 0.5rem;
+  }
+
+  .navLink {
+    font-size: 0.85rem;
+  }
+
+  .langDisplay {
+    font-size: 0.7rem;
+  }
+
+  .langPopup {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
