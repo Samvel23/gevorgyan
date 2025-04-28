@@ -90,8 +90,8 @@ export default function Home() {
         <Image
           src={logo}
           alt="Gevorgyan Legal Logo"
-          width={150}
-          height={150}
+          width={200}
+          height={200}
           className={styles.logo}
           priority
         />

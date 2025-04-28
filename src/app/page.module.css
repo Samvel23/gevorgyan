@@ -32,6 +32,7 @@
   margin-bottom: 1.5rem;
   margin-top: 100px;
   transition: var(--transition);
+  opacity: 0.8;
 }
 
 .logo:hover {
@@ -318,8 +319,8 @@
 
   .logo {
     margin-top: 30px;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
 
   .heroServiceCard {
