@@ -179,22 +179,13 @@ export default function Home() {
                 <FaWhatsapp size={30} />
               </a>
               <a
-                href="https://instagram.com/gevorgyanlegal"
+                href="https://www.instagram.com/gevorgyan_legal/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
                 aria-label="Instagram"
               >
                 <FaInstagram size={30} />
-              </a>
-              <a
-                href="https://t.me/gevorgyanlegal"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialLink}
-                aria-label="Telegram"
-              >
-                <FaTelegramPlane size={30} />
               </a>
             </div>
           </div>
@@ -213,7 +204,7 @@ export default function Home() {
               ? "Our Services"
               : lang === "ru"
               ? "Наши услуги"
-              : "Մեր ծառայությունները"}
+              : "Ծառայություններ"}
           </h2>
           <div className={styles.servicesContent}>
             <div className={styles.servicesImageContainer}>
