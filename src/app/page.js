@@ -151,7 +151,12 @@ export default function Home() {
                 : lang === "ru"
                 ? "Телефон:"
                 : "Հեռախոս:"}{" "}
-              <a href="tel:+18188586845" className={styles.contactLink}>
+              <a
+                className={styles.contactLink}
+                onClick={() => {
+                  navigator.clipboard.writeText("+1 (818) 858-6845");
+                }}
+              >
                 +1 (818) 858-6845
               </a>
             </p>
@@ -162,10 +167,13 @@ export default function Home() {
                 ? "Эл. почта:"
                 : "Էլ. հասցե:"}{" "}
               <a
-                href="mailto:info@gevorgyanlegal.com"
                 className={styles.contactLink}
+                onClick={() => {
+                  navigator.clipboard.writeText("g.gevorgyan1990@gmail.com");
+                  alert("Email copied to clipboard");
+                }}
               >
-                info@gevorgyanlegal.com
+                g.gevorgyan1990@gmail.com
               </a>
             </p>
             <div className={styles.socialIcons}>
