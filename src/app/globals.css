@@ -1,6 +1,37 @@
+p,
+h1,
+h2,
+h3,
+span,
+li {
+  opacity: 0.7;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair);
+}
+
+p,
+span,
+li,
+div {
+  font-family: var(--font-lora);
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-dark: #1a2b49;
+  --primary-gold: #cba64b;
+  --card-bg-dark: #2c3e6b;
+  --card-bg-light: #3b517d;
+  --text-light: #ffffff;
+  --bg-ivory: #f8f9fa;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,33 +1,43 @@
+/* Navbar */
 .navbar {
-  background-color: #1a2b49; /* Navy Blue */
+  display: flex;
+  background: linear-gradient(
+    to bottom,
+    #1a2b49ee,
+    #1a2b4999
+  ); /* Subtle gradient with transparency */
   color: #ffffff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  backdrop-filter: blur(5px); /* Subtle blur effect */
 }
 
+/* Navbar Container */
 .navbarContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  max-width: 1200px;
+  max-width: 1400px; /* Slightly wider for better spacing */
   margin: 0 auto;
+  width: 100%;
 }
 
+/* Navbar Brand */
 .navbarBrand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-@media (max-width: 768px) {
-  .navbarLogo {
-    display: none;
-  }
+.navbarLogo {
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .navbarLogo:hover {
@@ -35,24 +45,26 @@
 }
 
 .navbarTitle {
-  font-size: 1.6rem;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
 }
 
+/* Nav Content */
 .navContent {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
+/* Nav Links */
 .navLinks {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .navLink {
@@ -64,11 +76,13 @@
   text-decoration: none;
   cursor: pointer;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 0.5rem 0;
 }
 
 .navLink:hover {
-  color: #cba64b; /* Gold */
+  color: #cba64b;
+  transform: translateY(-2px);
 }
 
 .navLink.active {
@@ -79,7 +93,7 @@
 .navLink.active::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
@@ -87,61 +101,55 @@
   animation: slideIn 0.3s ease;
 }
 
+/* Language Toggle */
 .languageToggle {
   position: relative;
 }
 
-.langDisplay {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 500;
+.languageSelect {
+  background-color: transparent;
+  border: 1px solid #cba64b;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  appearance: none; /* Remove default select styling */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23cba64b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  padding-right: 1.5rem;
 }
 
-.langItem {
-  position: relative;
+.languageSelect:hover,
+.languageSelect:focus {
+  background-color: #cba64b;
+  color: #1a2b49;
+  outline: none;
+}
+
+.languageSelect option {
+  background-color: #1a2b49;
+  color: #ffffff;
+}
+
+/* Mobile Menu Toggle */
+.mobileMenuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.langItem:hover {
+.mobileMenuToggle:hover {
   color: #cba64b;
 }
 
-.langItem.langActive {
-  color: #cba64b;
-  font-weight: 600;
-}
-
-.langItem:hover .langPopup {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.langPopup {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 5px);
-  background-color: #1a2b49;
-  border: 1px solid #cba64b;
-  border-radius: 4px;
-  padding: 0.3rem 0.6rem;
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 500;
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1001;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
+/* Animations */
 @keyframes slideIn {
   from {
     width: 0;
@@ -151,13 +159,15 @@
   }
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .navbarContainer {
     padding: 0.75rem 1.5rem;
+    position: relative;
   }
 
   .navbarTitle {
-    display: none; /* Hide GEVORGYAN on mobile */
+    font-size: 1.4rem;
   }
 
   .navbarLogo {
@@ -165,31 +175,49 @@
     height: 40px;
   }
 
+  .mobileMenuToggle {
+    display: block;
+  }
+
   .navContent {
-    gap: 1rem;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #1a2b49ee;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop099-filter: blur(5px);
+  }
+
+  .navContent.mobileMenuOpen {
+    display: flex;
   }
 
   .navLinks {
-    gap: 0.8rem;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
   }
 
   .navLink {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    padding: 0.75rem;
+    width: 100%;
+    text-align: center;
   }
 
   .navLink.active::after {
-    bottom: -2px;
-    height: 1.5px;
+    bottom: 0;
+    height: 2px;
   }
 
-  .langDisplay {
-    font-size: 0.8rem;
-  }
-
-  .langPopup {
-    transform: translate(-50%, 3px);
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
+  .languageSelect {
+    font-size: 0.85rem;
+    padding: 0.3rem 1.5rem 0.3rem 0.8rem;
   }
 }
 
@@ -203,20 +231,16 @@
     height: 35px;
   }
 
-  .navLinks {
-    gap: 0.5rem;
+  .navbarTitle {
+    font-size: 1.2rem;
   }
 
   .navLink {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
-  .langDisplay {
-    font-size: 0.7rem;
-  }
-
-  .langPopup {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
+  .languageSelect {
+    font-size: 0.8rem;
+    padding: 0.2rem 1.5rem 0.2rem 0.6rem;
   }
 }

@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import styles from "../styles/Navbar.module.css";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import Image from "next/image";
 import logo from "../photos/logo.jpeg";
 import { useLanguage } from "../context/LanguageContext";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { lang, setLang } = useLanguage();
 
   const scrollToSection = (id) => {
@@ -16,6 +18,7 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setActiveSection(id);
+      setIsMobileMenuOpen(false); // Close mobile menu on link click
     }
   };
 
@@ -24,7 +27,7 @@ export default function Navbar() {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5, // Trigger when 50% of section is visible
+      threshold: 0.5,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -81,6 +84,10 @@ export default function Navbar() {
     { code: "eng", label: "ENG" },
   ];
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav className={styles.navbar}>
       <Container className={styles.navbarContainer}>
@@ -100,7 +107,14 @@ export default function Navbar() {
               : "ԳԵՎՈՐԳՅԱՆ"}
           </span>
         </div>
-        <div className={styles.navContent}>
+        <button className={styles.mobileMenuToggle} onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+        <div
+          className={`${styles.navContent} ${
+            isMobileMenuOpen ? styles.mobileMenuOpen : ""
+          }`}
+        >
           <ul className={styles.navLinks}>
             {navLinks.map((link) => (
               <li key={link.id}>
@@ -116,21 +130,17 @@ export default function Navbar() {
             ))}
           </ul>
           <div className={styles.languageToggle}>
-            <p className={styles.langDisplay}>
-              {languageOptions.map((option, index) => (
-                <span
-                  key={option.code}
-                  className={`${styles.langItem} ${
-                    lang === option.code ? styles.langActive : ""
-                  }`}
-                  onClick={() => setLang(option.code)}
-                >
+            <select
+              className={styles.languageSelect}
+              value={lang}
+              onChange={(e) => setLang(e.target.value)}
+            >
+              {languageOptions.map((option) => (
+                <option key={option.code} value={option.code}>
                   {option.label}
-                  {index < languageOptions.length - 1 && "/"}
-                  <span className={styles.langPopup}>{option.label}</span>
-                </span>
+                </option>
               ))}
-            </p>
+            </select>
           </div>
         </div>
       </Container>
