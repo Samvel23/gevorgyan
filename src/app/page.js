@@ -147,6 +147,20 @@ export default function Home() {
           <div className={styles.contactInfo}>
             <p>
               {lang === "eng"
+                ? "Name Surname:"
+                : lang === "ru"
+                ? "Имя Фамилия:"
+                : "Անուն Ազգանուն:"}{" "}
+              <a className={styles.contactLink}>
+                {lang === "eng"
+                  ? "Greg Gevorgyan"
+                  : lang === "ru"
+                  ? "Грег Геворгян"
+                  : "Գրեգ Գևորգյան"}
+              </a>
+            </p>
+            <p>
+              {lang === "eng"
                 ? "Phone:"
                 : lang === "ru"
                 ? "Телефон:"
@@ -169,11 +183,11 @@ export default function Home() {
               <a
                 className={styles.contactLink}
                 onClick={() => {
-                  navigator.clipboard.writeText("g.gevorgyan1990@gmail.com");
+                  navigator.clipboard.writeText("gevorgyanlegal@yahoo.com");
                   alert("Email copied to clipboard");
                 }}
               >
-                g.gevorgyan1990@gmail.com
+                gevorgyanlegal@yahoo.com
               </a>
             </p>
             <div className={styles.socialIcons}>
